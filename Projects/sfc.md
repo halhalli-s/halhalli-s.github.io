@@ -1,3 +1,10 @@
+---
+layout: default
+title: SFC
+---
+
+
+
 \# Safe Flight Corridor (SFC) Generation for Quadrotor Trajectory Planning
 
 
@@ -149,6 +156,7 @@ This significantly improved corridor quality.
 \- Hardware deployment on quadrotor platforms  
 
 \- Runtime benchmarking and optimization  
+
 
 
 
