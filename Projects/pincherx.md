@@ -1,3 +1,9 @@
+---
+layout: default
+title: PincherX Pick & Place
+---
+
+
 # Pick-and-Place Motion Planning with PincherX 100 Manipulator
 
 ## Overview
