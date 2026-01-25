@@ -7,6 +7,8 @@ title: Sachidanand Halhalli
 
 Robotics engineer focused on **motion planning**, **autonomous navigation**, and **real-world robot deployment**.
 
+---
+
 ## Projects
 
 ### Safe Flight Corridor (SFC) Generation for Quadrotors
