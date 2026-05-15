@@ -7,7 +7,7 @@ title: Sachidanand Halhalli
 
 <img src="./Assets/images/profile_pic.jpeg" alt="Sachidanand Halhalli" style="width:130px;height:110px;border-radius:54%;object-fit:cover;object-position:center 15%;float:right;margin:0 0 1.5rem 2rem;">
 
-**Robotics Software Engineer — Motion Planning · Autonomous Navigation · Perception · Embedded Systems · ROS2 · C++17**
+**Motion Planning · Autonomous Navigation · Embedded Systems · ROS2**
 
 
 Motion planning specialist with hands-on experience across the full robotics stack. I know how perception feeds planning and how planning feeds control — and I've shipped code that runs on real robots, not just in sim.
@@ -30,7 +30,7 @@ Motion planning specialist with hands-on experience across the full robotics sta
 
 ---
 
-## Projects
+## Projects {#projects}
 
 ### [Perception-Constrained Safe Flight Corridor Planner](./Projects/sfc)
 Full 3D motion planning pipeline deployed on a real quadrotor. C++17 · ROS2 · A* · IRIS · ADMM · VOXL2 ARM64 · PX4 · Docker · OptiTrack  
