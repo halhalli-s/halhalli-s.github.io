@@ -18,7 +18,7 @@ The sensor modeling work focused on understanding how real LiDAR sensors fail �
 
 ---
 
-## Part 1 — 2D LiDAR Sensor Model
+## 2D LiDAR Sensor Model
 
 ### Ideal Ray Tracing
 
@@ -47,7 +47,7 @@ The difference from simple Gaussian noise is significant in practice. The heavy 
 
 ---
 
-## Part 2 — Point Cloud SLAM on Real Velodyne Data
+## Point Cloud SLAM on Real Velodyne Data
 
 ### Dataset
 
