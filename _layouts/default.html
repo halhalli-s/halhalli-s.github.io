@@ -10,7 +10,10 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-        <nav class="nav">
+        <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav" id="main-nav">
           <a href="{{ '/' | relative_url }}">Home</a>
           <a href="{{ '/Projects/sfc.html' | relative_url }}">SFC</a>
           <a href="{{ '/Projects/rl_locomotion.html' | relative_url }}">RL Locomotion</a>
@@ -30,5 +33,21 @@
         <span>© {{ site.time | date: '%Y' }} {{ site.title }}</span>
       </div>
     </footer>
+
+    <script>
+      function toggleNav() {
+        const nav = document.getElementById('main-nav');
+        const btn = document.querySelector('.nav-toggle');
+        nav.classList.toggle('open');
+        btn.classList.toggle('open');
+      }
+      // Close nav when a link is clicked (mobile UX)
+      document.querySelectorAll('.nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('main-nav').classList.remove('open');
+          document.querySelector('.nav-toggle').classList.remove('open');
+        });
+      });
+    </script>
   </body>
 </html>
