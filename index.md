@@ -5,7 +5,7 @@ title: Sachidanand Halhalli
 
 # Sachidanand Halhalli
 
-<img src="./Assets/images/profile_pic.jpeg" alt="Sachidanand Halhalli" style="width:160px;height:140px;border-radius:35%;object-fit:cover;object-position:center 8%;float:right;margin:0 0 1.5rem 2rem;">
+<img src="./Assets/images/profile_pic.jpeg" alt="Sachidanand Halhalli" style="width:190px;height:140px;border-radius:50%;object-fit:cover;object-position:center 8%;float:right;margin:0 0 1.5rem 2rem;">
 
 **Motion Planning · Autonomous Navigation · Embedded Systems · ROS2**
 
