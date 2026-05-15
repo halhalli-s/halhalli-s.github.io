@@ -19,39 +19,74 @@ body{
   margin: 0 auto;
   padding: 24px 18px;
 }
+
+/* ── Header ── */
 .site-header{
   position: sticky;
   top: 0;
-  background: rgba(11,15,23,0.9);
+  background: rgba(11,15,23,0.95);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
+  z-index: 100;
 }
 .header-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
   gap: 14px;
-  flex-wrap: wrap;
-  padding: 10px 18px;
 }
 .brand{
   color: var(--text);
-  text-decoration:none;
+  text-decoration: none;
   font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
 }
+
+/* ── Desktop Nav ── */
 .nav{
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 4px;
 }
 .nav a{
   color: var(--muted);
-  text-decoration:none;
+  text-decoration: none;
   margin-left: 10px;
   font-size: 0.9rem;
+  transition: color 0.2s;
 }
-.nav a:hover{color: var(--text);}
+.nav a:hover{ color: var(--text); }
 
+/* ── Hamburger button (hidden on desktop) ── */
+.nav-toggle{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+}
+.nav-toggle span{
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+.nav-toggle.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2){ opacity: 0; }
+.nav-toggle.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Typography ── */
 h1{font-size: 2.2rem; margin: 18px 0 8px;}
 h2{font-size: 1.4rem; margin: 22px 0 10px;}
 h3{font-size: 1.15rem; margin: 18px 0 8px;}
@@ -67,16 +102,14 @@ hr{
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 0.9rem;
+  padding: 12px 0;
 }
 code, pre{
   background: rgba(255,255,255,0.06);
   border: 1px solid var(--border);
   border-radius: 10px;
 }
-pre{
-  padding: 12px;
-  overflow:auto;
-}
+pre{ padding: 12px; overflow: auto; }
 blockquote{
   margin: 14px 0;
   padding: 10px 14px;
@@ -97,6 +130,31 @@ blockquote{
   flex-shrink: 0;
 }
 
+/* ── Contact links row ── */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+}
+.contact-links a {
+  color: var(--link);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.contact-links a:hover { text-decoration: underline; }
+.contact-links .location {
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 /* ── All images ── */
 img {
   max-width: 60%;
@@ -105,91 +163,68 @@ img {
   margin: 1rem auto;
   border-radius: 6px;
 }
-
-/* ── Project images capped and responsive ── */
 .container img {
   max-width: min(100%, 700px) !important;
   height: auto !important;
 }
 
 /* ── Tables ── */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: 0.95rem;
-}
-th {
-  background: var(--card);
-  color: var(--text);
-  padding: 8px 12px;
-  text-align: left;
-  border-bottom: 2px solid var(--border);
-}
-td {
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--border);
-  color: var(--muted);
-}
-tr:last-child td {
-  border-bottom: none;
-}
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+th { background: var(--card); color: var(--text); padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--border); }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--muted); }
+tr:last-child td { border-bottom: none; }
 
-/* ── RL gait 2x2 grid ── */
-.gait-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-.gait-grid div p {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 0.3rem;
-  color: var(--muted);
-}
-.gait-grid img {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0;
-  border-radius: 4px;
-}
+/* ── RL gait grid ── */
+.gait-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.gait-grid div p { text-align: center; font-weight: bold; margin-bottom: 0.3rem; color: var(--muted); }
+.gait-grid img { width: 100% !important; max-width: 100% !important; margin: 0; border-radius: 4px; }
 
 /* ════════════════════════════════
    RESPONSIVE BREAKPOINTS
    ════════════════════════════════ */
 
-/* ── Tablet (max 768px) ── */
+/* ── Tablet (≤768px) ── */
 @media (max-width: 768px) {
   h1 { font-size: 1.8rem; }
   h2 { font-size: 1.25rem; }
   h3 { font-size: 1.05rem; }
+  .container { padding: 20px 16px; }
 
-  .container {
-    padding: 20px 16px;
+  .nav-toggle { display: flex; }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(11,15,23,0.98);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 18px;
+    gap: 0;
   }
+  .nav.open { display: flex; }
+  .nav a {
+    margin-left: 0;
+    padding: 10px 0;
+    font-size: 1rem;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav a:last-child { border-bottom: none; }
 
-  .profile-pic {
-    width: 100px;
-    height: 100px;
-    margin: 0 0 1rem 1.2rem;
-  }
-
-  .container img {
-    max-width: 90% !important;
-  }
+  .profile-pic { width: 100px; height: 100px; margin: 0 0 1rem 1.2rem; }
+  .contact-links { gap: 10px 16px; font-size: 0.9rem; }
+  .container img { max-width: 90% !important; }
 }
 
-/* ── Mobile (max 480px) ── */
+/* ── Mobile (≤480px) ── */
 @media (max-width: 480px) {
   h1 { font-size: 1.5rem; }
   h2 { font-size: 1.15rem; }
+  .container { padding: 16px 14px; }
 
-  .container {
-    padding: 16px 14px;
-  }
-
-  /* Stack profile pic above text on mobile */
   .profile-pic {
     float: none;
     display: block;
@@ -198,16 +233,12 @@ tr:last-child td {
     height: 110px;
   }
 
-  .nav a {
-    font-size: 0.8rem;
-    margin-left: 6px;
+  .contact-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 
-  .container img {
-    max-width: 100% !important;
-  }
-
-  .gait-grid {
-    grid-template-columns: 1fr;
-  }
+  .container img { max-width: 100% !important; }
+  .gait-grid { grid-template-columns: 1fr; }
 }
