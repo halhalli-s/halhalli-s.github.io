@@ -77,49 +77,25 @@ blockquote{
   background: rgba(255,255,255,0.04);
 }
 
-/* ── Images ── */
+/* ── All images ── */
 img {
-  max-width: min(100%, 800px) !important
+  max-width: 100%;
   height: auto;
   display: block;
   margin: 1rem auto;
   border-radius: 6px;
 }
 
-/* ── Profile picture ── */
-.profile-pic {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  float: right;
-  margin: 0 0 1.5rem 2rem;
+/* ── Project images capped and responsive ── */
+.container img {
+  max-width: min(100%, 700px) !important;
+  height: auto !important;
 }
 
-/* ── Clearfix for floated profile pic ── */
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* ── RL gait 2x2 grid ── */
-.gait-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-.gait-grid div p {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 0.3rem;
-  color: var(--muted);
-}
-.gait-grid img {
-  width: 100%;
-  margin: 0;
-  border-radius: 4px;
+@media (max-width: 600px) {
+  .container img {
+    max-width: 100% !important;
+  }
 }
 
 /* ── Tables ── */
@@ -143,4 +119,30 @@ td {
 }
 tr:last-child td {
   border-bottom: none;
+}
+
+/* ── RL gait 2x2 grid ── */
+.gait-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.gait-grid div p {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: var(--muted);
+}
+.gait-grid img {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0;
+  border-radius: 4px;
+}
+
+@media (max-width: 520px) {
+  .gait-grid {
+    grid-template-columns: 1fr;
+  }
 }
