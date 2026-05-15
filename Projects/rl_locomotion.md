@@ -32,7 +32,24 @@ Forward velocity rewarded, high torques and contact forces penalized, +1 surviva
 
 ## SAC Implementation
 
-![SAC reward shaping variants — Baseline, Speed Focused, Energy Efficient, Symmetric Gait](../Assets/images/rl_gaits.png)
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0;">
+  <div>
+    <p style="text-align:center; font-weight:bold; margin-bottom:0.3rem;">Baseline</p>
+    <img src="../Assets/images/rl_baseline.gif" alt="Baseline gait" style="width:100%;">
+  </div>
+  <div>
+    <p style="text-align:center; font-weight:bold; margin-bottom:0.3rem;">Speed Focused</p>
+    <img src="../Assets/images/rl_speed.gif" alt="Speed focused gait" style="width:100%;">
+  </div>
+  <div>
+    <p style="text-align:center; font-weight:bold; margin-bottom:0.3rem;">Energy Efficient</p>
+    <img src="../Assets/images/rl_energy.gif" alt="Energy efficient gait" style="width:100%;">
+  </div>
+  <div>
+    <p style="text-align:center; font-weight:bold; margin-bottom:0.3rem;">Symmetric Gait</p>
+    <img src="../Assets/images/rl_symmetric.gif" alt="Symmetric gait" style="width:100%;">
+  </div>
+</div>
 
 SAC (Haarnoja et al. 2018) is an off-policy maximum entropy actor-critic. It optimizes:
 
