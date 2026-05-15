@@ -5,6 +5,8 @@ title: Sachidanand Halhalli
 
 # Sachidanand Halhalli
 
+<img src="./Assets/images/profile_pic.jpg" alt="Sachidanand Halhalli" style="width:150px; border-radius:50%; float:right; margin: 0 0 1rem 2rem;">
+
 **Robotics Software Engineer** — Motion Planning · Autonomous Navigation · Embedded Systems · ROS2 · C++17
 
 I build robotics software that runs on real hardware. My graduate research at Northeastern focused on deploying a full 3D motion planning system on a real quadrotor — from algorithm design through embedded deployment and hardware-in-the-loop validation. I care about the gap between simulation and reality, and about writing code that works when the robot is actually moving.
