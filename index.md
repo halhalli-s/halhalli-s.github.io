@@ -7,9 +7,12 @@ title: Sachidanand Halhalli
 
 <img src="./Assets/images/profile_pic.jpeg" alt="Sachidanand Halhalli" style="width:130px;height:130px;border-radius:50%;object-fit:cover;object-position:center 15%;float:right;margin:0 0 1.5rem 2rem;">
 
-**Robotics Software Engineer** — Motion Planning · Autonomous Navigation · Embedded Systems · ROS2 · C++17
+*Robotics Software Engineer — Motion Planning · Autonomous Navigation · Perception · Embedded Systems · ROS2 · C++17
 
-I build robotics software that runs on real hardware. My graduate research at Northeastern focused on deploying a full 3D motion planning system on a real quadrotor — from algorithm design through embedded deployment and hardware-in-the-loop validation. I care about the gap between simulation and reality, and about writing code that works when the robot is actually moving.
+
+I work across the full robotics stack — perception, planning, and control — with a specialization in motion planning. I understand how these layers talk to each other: what each module consumes, what it produces, and where the hard integration problems live. My deployment experience is on quadrotors, but the fundamentals transfer — I've picked up new platforms fast and I'm comfortable reasoning about arms, ground vehicles, and UAVs at the architecture level.
+My graduate research at Northeastern was end-to-end: building a 3D Safe Flight Corridor planner in C++17, integrating it with ROS2 and PX4, and validating it on real hardware under hardware-in-the-loop conditions. That's the kind of work I want to keep doing — software that doesn't just pass unit tests, but runs on a real robot in the real world.
+
 
 📧 [halhalli.s@northeastern.edu](mailto:halhalli.s@northeastern.edu) &nbsp;|&nbsp; 💼 [LinkedIn](https://www.linkedin.com/in/sachidanand-halhalli-652a1b208/) &nbsp;|&nbsp; 🐙 [GitHub](https://github.com/halhalli-s) &nbsp;|&nbsp; 📍 Boston, MA
 
