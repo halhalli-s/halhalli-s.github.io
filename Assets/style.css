@@ -79,7 +79,7 @@ blockquote{
 
 /* ── All images ── */
 img {
-  max-width: 100%;
+  max-width: 60%;
   height: auto;
   display: block;
   margin: 1rem auto;
@@ -94,7 +94,7 @@ img {
 
 @media (max-width: 600px) {
   .container img {
-    max-width: 100% !important;
+    max-width: 60% !important;
   }
 }
 
