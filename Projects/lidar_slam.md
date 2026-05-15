@@ -18,9 +18,11 @@ The sensor modeling work focused on understanding how real LiDAR sensors fail �
 
 ---
 
-## 2D LiDAR Sensor Model
+## Part 1 — 2D LiDAR Sensor Model
 
 ### Ideal Ray Tracing
+
+![2D LiDAR ray tracing on occupancy grid](../Assets/images/lidar_raytrace.png)
 
 The starting point was a clean 2D LiDAR simulator using ray tracing on an occupancy grid. For each beam angle, the sensor marches along the ray at a fixed resolution until it hits an occupied cell or reaches max range, returning the measured distance. Configurable parameters: beam count, angular limits, range limits, range resolution.
 
@@ -47,13 +49,15 @@ The difference from simple Gaussian noise is significant in practice. The heavy 
 
 ---
 
-## Point Cloud SLAM on Real Velodyne Data
+## Part 2 — Point Cloud SLAM on Real Velodyne Data
 
 ### Dataset
 
 180 Velodyne HDL-64E point cloud scans (~88,000 points/scan) from Argo AI's autonomous driving dataset, captured in Miami over 18 seconds. The vehicle starts stationary at a T-intersection, waits for traffic, then navigates through the intersection. Real urban driving data — moving vehicles, pedestrians, varying point density.
 
 ### Downsampling
+
+![Original (86k points) vs downsampled (20k points) Velodyne scan](../Assets/images/lidar_pointcloud.png)
 
 88,000 points per scan is too dense for practical scan matching. Before running ICP, each scan is downsampled using a voxel grid implemented from scratch — no Open3D or external point cloud libraries.
 
@@ -74,6 +78,8 @@ The three core components:
 The ICP loop iterates: transform → match → estimate → repeat, until convergence or max iterations. Validated first on synthetic triangle point clouds before running on the Velodyne data.
 
 ### Trajectory Estimation with GTSAM
+
+![Vehicle trajectory through Miami intersection — top-down view after GTSAM optimization](../Assets/images/lidar_trajectory.png)
 
 ICP gives a relative transform between each pair of consecutive scans. Chaining these gives an odometry estimate — but errors accumulate. Over 180 scans, small per-frame errors compound into significant drift.
 

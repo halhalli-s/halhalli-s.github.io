@@ -10,6 +10,10 @@ title: Safe Flight Corridor Planner
 
 ---
 
+![SFC generated during hardware-in-the-loop operation, visualized in Foxglove](../Assets/images/sfc_foxglove.png)
+
+---
+
 ## What This Is
 
 A full 3D motion planning system for a real quadrotor, deployed onboard and validated in hardware-in-the-loop conditions. The system generates a **Safe Flight Corridor (SFC)** — a chain of overlapping, collision-free convex polytopes — that a trajectory optimizer can use to compute smooth, provably safe trajectories.
@@ -24,7 +28,21 @@ This project focuses specifically on SFC *generation* under **perception constra
 
 The pipeline runs entirely onboard the **VOXL2 ARM64** flight computer inside a Docker container. No computation is offloaded to the ground station.
 
-![ROS2 System Architecture](../Assets/images/ros2_system_architecture.png)
+```
+OptiTrack (120 Hz pose)
+        │
+   mocap_bridge         ← NED→ENU frame conversion, safety filtering
+        │
+   frustum_node         ← Raycast OctoMap, classify free/occupied voxels
+        │                  within sensor frustum (HFOV=80°, VFOV=70°, 0.3–2.0m)
+   sfc_ros_node
+        │
+   ┌────┴─────────────────────────────┐
+   │  A* → IRIS → ADMM → Validation  │
+   └────┬─────────────────────────────┘
+        │
+   /sfc_planner/corridor  (published to Foxglove / downstream consumers)
+```
 
 **ROS2 nodes:** `mocap_bridge`, `frustum_node`, `sfc_ros_node`, `octomap_publisher`  
 **Third-party deps:** OctoMap, IRIS (built from source for ARM64), CasADi, MOSEK 10.1, Eigen3
@@ -101,6 +119,10 @@ A small free-space bubble is explicitly cleared around the local A* start positi
 ## Results
 
 **Validated across 34 hardware-in-the-loop replanning cycles** on the physical Prance quadrotor in a 5×5×5m instrumented flight cage.
+
+![MATLAB validation — sparse and dense obstacle environments](../Assets/images/sfc_matlab.png)
+
+![SFC across four successive replanning cycles toward the global goal](../Assets/images/sfc_cycles.png)
 
 ### Runtime Performance (VOXL2 ARM64)
 
