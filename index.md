@@ -5,7 +5,7 @@ title: Sachidanand Halhalli
 
 # Sachidanand Halhalli
 
-<img src="./Assets/images/profile_pic.jpg" alt="Sachidanand Halhalli" style="width:150px; border-radius:50%; float:right; margin: 0 0 1rem 2rem;">
+<img src="./Assets/images/profile_pic.jpg" alt="Sachidanand Halhalli" class="profile-pic">
 
 **Robotics Software Engineer** — Motion Planning · Autonomous Navigation · Embedded Systems · ROS2 · C++17
 
