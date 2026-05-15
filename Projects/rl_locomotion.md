@@ -32,22 +32,22 @@ Forward velocity rewarded, high torques and contact forces penalized, +1 surviva
 
 ## SAC Implementation
 
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0;">
+<div class="gait-grid">
   <div>
-    <p style="text-align:center; font-weight:bold; margin-bottom:0.3rem;">Baseline</p>
-    <img src="../Assets/images/rl_baseline.gif" alt="Baseline gait" style="width:100%;">
+    <p>Baseline</p>
+    <img src="../Assets/images/rl_baseline.gif" alt="Baseline">
   </div>
   <div>
-    <p style="text-align:center; font-weight:bold; margin-bottom:0.3rem;">Speed Focused</p>
-    <img src="../Assets/images/rl_speed.gif" alt="Speed focused gait" style="width:100%;">
+    <p>Speed Focused</p>
+    <img src="../Assets/images/rl_speed.gif" alt="Speed Focused">
   </div>
   <div>
-    <p style="text-align:center; font-weight:bold; margin-bottom:0.3rem;">Energy Efficient</p>
-    <img src="../Assets/images/rl_energy.gif" alt="Energy efficient gait" style="width:100%;">
+    <p>Energy Efficient</p>
+    <img src="../Assets/images/rl_energy.gif" alt="Energy Efficient">
   </div>
   <div>
-    <p style="text-align:center; font-weight:bold; margin-bottom:0.3rem;">Symmetric Gait</p>
-    <img src="../Assets/images/rl_symmetric.gif" alt="Symmetric gait" style="width:100%;">
+    <p>Symmetric Gait</p>
+    <img src="../Assets/images/rl_symmetric.gif" alt="Symmetric Gait">
   </div>
 </div>
 
