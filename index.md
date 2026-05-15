@@ -5,12 +5,12 @@ title: Sachidanand Halhalli
 
 # Sachidanand Halhalli
 
-<img src="./Assets/images/profile_pic.jpeg" alt="Sachidanand Halhalli" style="width:130px;height:130px;border-radius:50%;object-fit:cover;object-position:center 15%;float:right;margin:0 0 1.5rem 2rem;">
+<img src="./Assets/images/profile_pic.jpeg" alt="Sachidanand Halhalli" style="width:130px;height:110px;border-radius:54%;object-fit:cover;object-position:center 15%;float:right;margin:0 0 1.5rem 2rem;">
 
 **Robotics Software Engineer — Motion Planning · Autonomous Navigation · Perception · Embedded Systems · ROS2 · C++17
 
 
-I work across the full robotics stack — perception, planning, and control — with a specialization in motion planning. I understand how these layers talk to each other: what each module consumes, what it produces, and where the hard integration problems live. My deployment experience is on quadrotors, but the fundamentals transfer — I've picked up new platforms fast and I'm comfortable reasoning about arms, ground vehicles, and UAVs at the architecture level.
+I work across the full robotics stack — perception, planning, and control — with a specialization in motion planning. I understand how these layers talk to each other: what each module consumes, what it produces, and where the hard integration problems live. My deployment experience is on quadrotors, but the fundamentals transfer, I've picked up new platforms fast and I'm comfortable reasoning about arms, ground vehicles, and UAVs at the architecture level.
 My graduate research at Northeastern was end-to-end: building a 3D Safe Flight Corridor planner in C++17, integrating it with ROS2 and PX4, and validating it on real hardware under hardware-in-the-loop conditions. That's the kind of work I want to keep doing — software that doesn't just pass unit tests, but runs on a real robot in the real world.
 
 
