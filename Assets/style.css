@@ -16,7 +16,6 @@ body{
 }
 .container{
   max-width: 980px;
-  text-align: justify;
   margin: 0 auto;
   padding: 24px 18px;
 }
