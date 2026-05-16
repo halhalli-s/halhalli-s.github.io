@@ -87,7 +87,7 @@ body {
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── Typography ── */
-h1 { font-size: 2.2rem; margin: 0 0 8px; }
+h1 { font-size: 2.2rem; margin: 18px 0 8px; }
 h2 { font-size: 1.4rem; margin: 22px 0 10px; }
 h3 { font-size: 1.15rem; margin: 18px 0 8px; }
 p { margin: 10px 0; }
@@ -118,26 +118,21 @@ blockquote {
   background: rgba(255,255,255,0.04);
 }
 
-/* ── Hero layout ── */
-.hero {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 1rem;
-  margin-top: 8px;
+/* ── Profile pic (float right on desktop) ── */
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 8%;
+  float: right;
+  margin: 0 0 1.5rem 2rem;
+  flex-shrink: 0;
+  display: block;
+  max-width: unset !important;
 }
-.hero-text { flex: 1; }
-.subtitle {
-  font-weight: 700;
-  color: var(--text);
-  font-size: 1rem;
-  margin: 4px 0 12px;
-}
-.bio {
-  color: var(--text);
-  font-size: 0.97rem;
-  margin: 0 0 4px;
-}
+
+/* ── CTA button ── */
 .cta-btn {
   display: inline-block;
   margin-top: 1.2rem;
@@ -151,20 +146,6 @@ blockquote {
 .cta-btn:hover {
   background: #3b7de8;
   text-decoration: none !important;
-}
-
-/* ── Profile pic ── */
-.profile-pic {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center 8%;
-  flex-shrink: 0;
-  float: none;
-  margin: 0;
-  display: block;
-  max-width: unset !important;
 }
 
 /* ── Contact links ── */
@@ -194,22 +175,16 @@ blockquote {
 }
 
 /* ── Technical Stack ── */
-.tech-stack {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 6px 0;
-  margin: 0;
-}
 .tech-stack p {
   margin: 0;
-  padding: 6px 0;
+  padding: 7px 0;
   border-bottom: 1px solid var(--border);
   font-size: 0.95rem;
   line-height: 1.5;
 }
 .tech-stack p:last-child { border-bottom: none; }
 
-/* ── Project cards on homepage ── */
+/* ── Project cards ── */
 .project-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -217,21 +192,21 @@ blockquote {
   padding: 16px 18px;
   margin-bottom: 14px;
 }
-.project-card h3 {
-  margin: 0 0 6px;
-  font-size: 1.05rem;
-}
+.project-card h3 { margin: 0 0 6px; font-size: 1.05rem; }
 .project-card .tags {
   font-size: 0.85rem;
   color: var(--muted);
   margin: 4px 0 6px;
   line-height: 1.6;
+  text-align: left !important;
 }
+.project-card p { margin: 4px 0; }
 .project-card .meta {
   font-size: 0.82rem;
   color: var(--muted);
   font-style: italic;
-  margin-top: 4px;
+  margin-top: 6px;
+  text-align: left !important;
 }
 
 /* ── All images ── */
@@ -258,13 +233,11 @@ tr:last-child td { border-bottom: none; }
 .gait-grid div p { text-align: center; font-weight: bold; margin-bottom: 0.3rem; color: var(--muted); }
 .gait-grid img { width: 100% !important; max-width: 100% !important; margin: 0; border-radius: 4px; }
 
-/* ── Justified text on desktop ── */
-@media (min-width: 600px) {
-  .container p { text-align: justify; }
-  .subtitle { text-align: left; }
-  .tech-stack p { text-align: left; }
-  .project-card .tags { text-align: left; }
-  .project-card .meta { text-align: left; }
+/* ── Justified text everywhere ── */
+.container p { text-align: justify; }
+/* But NOT these elements */
+.tags, .meta, .tech-stack p, .contact-links, h1, h2, h3 {
+  text-align: left !important;
 }
 
 /* ════════════════════════════════
@@ -302,7 +275,7 @@ tr:last-child td { border-bottom: none; }
   }
   .nav a:last-child { border-bottom: none; }
 
-  .profile-pic { width: 110px; height: 110px; }
+  .profile-pic { width: 110px; height: 110px; margin: 0 0 1rem 1.2rem; }
   .contact-links { gap: 10px 16px; font-size: 0.9rem; }
   .container img { max-width: 90% !important; }
 }
@@ -313,24 +286,17 @@ tr:last-child td { border-bottom: none; }
   h2 { font-size: 1.15rem; }
   .container { padding: 16px 14px; }
 
-  .hero {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
-  }
-  .hero-text {
-    order: 2;
-    width: 100%;
-    text-align: left;
-  }
+  /* Pic stacks on top, centered */
   .profile-pic {
-    order: 1;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto;
+    float: none;
+    display: block;
+    margin: 0 auto 1.2rem auto;
+    width: 110px;
+    height: 110px;
   }
 
-  .subtitle { font-size: 0.92rem; }
+  /* Left-align body text on mobile — no justify on narrow screens */
+  .container p { text-align: left; }
 
   .contact-links {
     flex-direction: column;
@@ -338,14 +304,8 @@ tr:last-child td { border-bottom: none; }
     gap: 8px;
   }
 
-  .tech-stack p {
-    font-size: 0.88rem;
-    padding: 8px 0;
-  }
-
-  .project-card {
-    padding: 14px;
-  }
+  .tech-stack p { font-size: 0.88rem; padding: 8px 0; }
+  .project-card { padding: 14px; }
   .project-card h3 { font-size: 0.98rem; }
   .project-card .tags { font-size: 0.82rem; }
   .project-card .meta { font-size: 0.8rem; }
