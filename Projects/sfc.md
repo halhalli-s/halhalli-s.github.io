@@ -28,21 +28,7 @@ This project focuses specifically on SFC *generation* under **perception constra
 
 The pipeline runs entirely onboard the **VOXL2 ARM64** flight computer inside a Docker container. No computation is offloaded to the ground station.
 
-```
-OptiTrack (120 Hz pose)
-        │
-   mocap_bridge         ← NED→ENU frame conversion, safety filtering
-        │
-   frustum_node         ← Raycast OctoMap, classify free/occupied voxels
-        │                  within sensor frustum (HFOV=80°, VFOV=70°, 0.3–2.0m)
-   sfc_ros_node
-        │
-   ┌────┴─────────────────────────────┐
-   │  A* → IRIS → ADMM → Validation  │
-   └────┬─────────────────────────────┘
-        │
-   /sfc_planner/corridor  (published to Foxglove / downstream consumers)
-```
+![ROS2 System Architecture](../Assets/images/ros2_system_architecture.png)
 
 **ROS2 nodes:** `mocap_bridge`, `frustum_node`, `sfc_ros_node`, `octomap_publisher`  
 **Third-party deps:** OctoMap, IRIS (built from source for ARM64), CasADi, MOSEK 10.1, Eigen3
