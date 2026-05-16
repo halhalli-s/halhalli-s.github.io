@@ -14,7 +14,12 @@ Motion planning specialist with hands-on experience across the full robotics sta
 
 <a href="#projects" style="display:inline-block; margin-top:1.2rem; padding:0.6rem 1.4rem; background:#4f8ef7; color:#fff; border-radius:6px; text-decoration:none; font-weight:600;">See my work ↓</a>
 
-📧 [halhalli.s@northeastern.edu](mailto:halhalli.s@northeastern.edu) &nbsp;|&nbsp; 💼 [LinkedIn](https://www.linkedin.com/in/sachidanand-halhalli-652a1b208/) &nbsp;|&nbsp; 🐙 [GitHub](https://github.com/halhalli-s) &nbsp;|&nbsp; 📍 Boston, MA
+<div class="contact-links">
+  <a href="mailto:halhalli.s@northeastern.edu">📧 halhalli.s@northeastern.edu</a>
+  <a href="https://www.linkedin.com/in/sachidanand-halhalli-652a1b208/" target="_blank">💼 LinkedIn</a>
+  <a href="https://github.com/halhalli-s" target="_blank">🐙 GitHub</a>
+  <span class="location">📍 Boston, MA</span>
+</div>
 
 ---
 
