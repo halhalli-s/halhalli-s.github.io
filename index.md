@@ -3,16 +3,15 @@ layout: default
 title: Sachidanand Halhalli
 ---
 
-# Sachidanand Halhalli
-
-<img src="./Assets/images/profile_pic.jpeg" alt="Sachidanand Halhalli" style="width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:center 8%;float:right;margin:0 0 1.5rem 2rem;">
-
-**Motion Planning · Autonomous Navigation · Embedded Systems · ROS2**
-
-
-Motion planning specialist with hands-on experience across the full robotics stack. I know how perception feeds planning and how planning feeds control — and I've shipped code that runs on real robots, not just in sim.
-
-<a href="#projects" style="display:inline-block; margin-top:1.2rem; padding:0.6rem 1.4rem; background:#4f8ef7; color:#fff; border-radius:6px; text-decoration:none; font-weight:600;">See my work ↓</a>
+<div class="hero">
+  <div class="hero-text">
+    <h1>Sachidanand Halhalli</h1>
+    <p class="subtitle">Motion Planning · Autonomous Navigation · Embedded Systems · ROS2</p>
+    <p class="bio">Motion planning specialist with hands-on experience across the full robotics stack. I know how perception feeds planning and how planning feeds control — and I've shipped code that runs on real robots, not just in sim.</p>
+    <a href="#projects" class="cta-btn">See my work ↓</a>
+  </div>
+  <img src="./Assets/images/profile_pic.jpeg" alt="Sachidanand Halhalli" class="profile-pic">
+</div>
 
 <div class="contact-links">
   <a href="mailto:halhalli.s@northeastern.edu">📧 halhalli.s@northeastern.edu</a>
