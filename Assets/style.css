@@ -280,6 +280,7 @@ tr:last-child td { border-bottom: none; }
   h1 { font-size: 1.5rem; }
   h2 { font-size: 1.15rem; }
   .container { padding: 16px 14px; }
+  container p:not(.bio):not(.tags):not(.meta) { text-align: justify; }
 
   /* Subtitle smaller so it doesn't wrap word by word */
   strong { font-size: 0.9rem; }
