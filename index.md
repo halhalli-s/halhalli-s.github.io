@@ -24,49 +24,54 @@ title: Sachidanand Halhalli
 
 ## Technical Stack
 
-**Languages:** C++17, Python, C  
-**Robotics:** ROS2 (Humble), PX4, Motion Planning (A*, IRIS, ADMM, Safe Flight Corridors), SLAM, EKF, ICP  
-**Systems:** VOXL2 ARM64, Docker, Linux, OpenMP  
-**Simulation:** Gazebo, RViz, MuJoCo  
-**Optimization:** CasADi, MOSEK  
-**ML/RL:** PyTorch, Stable-Baselines3, SAC, PPO  
-**Perception:** OctoMap, Velodyne LiDAR, Point Cloud Processing, GTSAM  
+<div class="tech-stack">
+  <p><strong>Languages:</strong> C++17, Python, C</p>
+  <p><strong>Robotics:</strong> ROS2 (Humble), PX4, Motion Planning (A*, IRIS, ADMM, Safe Flight Corridors), SLAM, EKF, ICP</p>
+  <p><strong>Systems:</strong> VOXL2 ARM64, Docker, Linux, OpenMP</p>
+  <p><strong>Simulation:</strong> Gazebo, RViz, MuJoCo</p>
+  <p><strong>Optimization:</strong> CasADi, MOSEK</p>
+  <p><strong>ML/RL:</strong> PyTorch, Stable-Baselines3, SAC, PPO</p>
+  <p><strong>Perception:</strong> OctoMap, Velodyne LiDAR, Point Cloud Processing, GTSAM</p>
+</div>
 
 ---
 
 ## Projects {#projects}
 
-### [Perception-Constrained Safe Flight Corridor Planner](./Projects/sfc)
-Full 3D motion planning pipeline deployed on a real quadrotor. C++17 · ROS2 · A* · IRIS · ADMM · VOXL2 ARM64 · PX4 · Docker · OptiTrack  
-*MS Thesis · SiliconSynapse Lab, Northeastern University · Nov 2025 – Apr 2026*
+<div class="project-card">
+  <h3><a href="./Projects/sfc">Perception-Constrained Safe Flight Corridor Planner</a></h3>
+  <p class="tags">C++17 · ROS2 · A* · IRIS · ADMM · VOXL2 ARM64 · PX4 · Docker · OptiTrack</p>
+  <p>Full 3D motion planning pipeline deployed on a real quadrotor.</p>
+  <p class="meta">MS Thesis · SiliconSynapse Lab, Northeastern University · Nov 2025 – Apr 2026</p>
+</div>
 
----
+<div class="project-card">
+  <h3><a href="./Projects/rl_locomotion">Quadruped Locomotion with Deep RL</a></h3>
+  <p class="tags">Python · MuJoCo · Stable-Baselines3 · SAC · PPO</p>
+  <p>SAC and PPO on MuJoCo Ant-v5 with reward shaping ablations, terrain domain randomization, and failure analysis.</p>
+  <p class="meta">CS5180 Reinforcement Learning · Jan 2026 – Apr 2026</p>
+</div>
 
-### [Quadruped Locomotion with Deep RL](./Projects/rl_locomotion)
-SAC and PPO on MuJoCo Ant-v5 with reward shaping ablations, terrain domain randomization, and failure analysis.  
-Python · MuJoCo · Stable-Baselines3 · SAC · PPO  
-*CS5180 Reinforcement Learning · Jan 2026 – Apr 2026*
+<div class="project-card">
+  <h3><a href="./Projects/lidar_slam">LiDAR Sensor Modeling & Point Cloud SLAM</a></h3>
+  <p class="tags">Python · NumPy · GTSAM · ICP · Velodyne LiDAR</p>
+  <p>2D LiDAR sensor model from scratch, Velodyne point cloud processing, ICP odometry, GTSAM pose graph optimization.</p>
+  <p class="meta">CS5335 Robotics Science and Systems · Sep 2025 – Dec 2025</p>
+</div>
 
----
+<div class="project-card">
+  <h3><a href="./Projects/turtlebot">Autonomous Navigation with ROS and TurtleBot3</a></h3>
+  <p class="tags">ROS · SLAM · AMCL · DWA · Gazebo</p>
+  <p>End-to-end ROS navigation stack: SLAM, AMCL, move_base — simulation and real hardware.</p>
+  <p class="meta">Jan 2025 – Feb 2025</p>
+</div>
 
-### [LiDAR Sensor Modeling & Point Cloud SLAM](./Projects/lidar_slam)
-2D LiDAR sensor model from scratch, Velodyne point cloud processing, ICP odometry, GTSAM pose graph optimization.  
-Python · NumPy · GTSAM · ICP · Velodyne LiDAR  
-*CS5335 Robotics Science and Systems · Sep 2025 – Dec 2025*
-
----
-
-### [Autonomous Navigation with ROS and TurtleBot3](./Projects/turtlebot)
-End-to-end ROS navigation stack: SLAM, AMCL, move_base — simulation and real hardware.  
-ROS · SLAM · AMCL · DWA · Gazebo  
-*Jan 2025 – Feb 2025*
-
----
-
-### [Pick-and-Place Motion Planning with PincherX 100](./Projects/pincherx)
-Joint-space trajectory planning for a 4-DOF manipulator on real hardware.  
-MATLAB · PincherX 100  
-*Dec 2024 – Jan 2025*
+<div class="project-card">
+  <h3><a href="./Projects/pincherx">Pick-and-Place Motion Planning with PincherX 100</a></h3>
+  <p class="tags">MATLAB · PincherX 100</p>
+  <p>Joint-space trajectory planning for a 4-DOF manipulator on real hardware.</p>
+  <p class="meta">Dec 2024 – Jan 2025</p>
+</div>
 
 ---
 
