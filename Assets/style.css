@@ -21,8 +21,10 @@ body{
   padding: 24px 18px;
 }
 
-.container p {
-  text-align: justify;
+@media (min-width: 600px) {
+  .container p {
+    text-align: justify;
+  }
 }
 
 /* ── Header ── */
@@ -227,6 +229,7 @@ tr:last-child td { border-bottom: none; }
 /* ── Mobile (≤480px) ── */
 @media (max-width: 480px) {
   h1 { font-size: 1.5rem; }
+  strong { font-size: 0.9rem; }
   h2 { font-size: 1.15rem; }
   .container { padding: 16px 14px; }
 
