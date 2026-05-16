@@ -118,7 +118,7 @@ blockquote {
   background: rgba(255,255,255,0.04);
 }
 
-/* ── Profile pic (float right on desktop) ── */
+/* ── Profile pic ── */
 .profile-pic {
   width: 130px;
   height: 130px;
@@ -127,7 +127,6 @@ blockquote {
   object-position: center 8%;
   float: right;
   margin: 0 0 1.5rem 2rem;
-  flex-shrink: 0;
   display: block;
   max-width: unset !important;
 }
@@ -143,10 +142,7 @@ blockquote {
   text-decoration: none !important;
   font-weight: 600;
 }
-.cta-btn:hover {
-  background: #3b7de8;
-  text-decoration: none !important;
-}
+.cta-btn:hover { background: #3b7de8; }
 
 /* ── Contact links ── */
 .contact-links {
@@ -181,6 +177,7 @@ blockquote {
   border-bottom: 1px solid var(--border);
   font-size: 0.95rem;
   line-height: 1.5;
+  text-align: left !important;
 }
 .tech-stack p:last-child { border-bottom: none; }
 
@@ -230,15 +227,13 @@ tr:last-child td { border-bottom: none; }
 
 /* ── RL gait grid ── */
 .gait-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-.gait-grid div p { text-align: center; font-weight: bold; margin-bottom: 0.3rem; color: var(--muted); }
+.gait-grid div p { text-align: center !important; font-weight: bold; margin-bottom: 0.3rem; color: var(--muted); }
 .gait-grid img { width: 100% !important; max-width: 100% !important; margin: 0; border-radius: 4px; }
 
-/* ── Justified text everywhere ── */
+/* ── Justify all body paragraphs globally ── */
 .container p { text-align: justify; }
-/* But NOT these elements */
-.tags, .meta, .tech-stack p, .contact-links, h1, h2, h3 {
-  text-align: left !important;
-}
+/* Exceptions — always left */
+.tags, .meta, .tech-stack p, .bio { text-align: left !important; }
 
 /* ════════════════════════════════
    RESPONSIVE BREAKPOINTS
@@ -286,7 +281,10 @@ tr:last-child td { border-bottom: none; }
   h2 { font-size: 1.15rem; }
   .container { padding: 16px 14px; }
 
-  /* Pic stacks on top, centered */
+  /* Subtitle smaller so it doesn't wrap word by word */
+  strong { font-size: 0.9rem; }
+
+  /* Pic stacks centered on top */
   .profile-pic {
     float: none;
     display: block;
@@ -295,8 +293,8 @@ tr:last-child td { border-bottom: none; }
     height: 110px;
   }
 
-  /* Left-align body text on mobile — no justify on narrow screens */
-  .container p { text-align: left; }
+  /* Bio left-aligned on mobile, project page paragraphs stay justified */
+  .bio { text-align: left !important; }
 
   .contact-links {
     flex-direction: column;
