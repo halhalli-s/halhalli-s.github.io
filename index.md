@@ -9,7 +9,7 @@ title: Sachidanand Halhalli
 
 **Motion Planning · Autonomous Navigation · Embedded Systems · ROS2**
 
-Motion planning specialist with hands-on experience across the full robotics stack. I know how perception feeds planning and how planning feeds control — and I've shipped code that runs on real robots, not just in sim.
+<p class="bio">Motion planning specialist with hands-on experience across the full robotics stack. I know how perception feeds planning and how planning feeds control — and I've shipped code that runs on real robots, not just in sim.</p>
 
 <a href="#projects" class="cta-btn">See my work ↓</a>
 
