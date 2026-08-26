@@ -10,13 +10,9 @@ title: HDVI-SLAM
 
 ---
 
-<!-- ============================================================
-     VIDEO PLACEHOLDER 1 — HERO
-     Rectangle walk WITH loop closure. Best-looking run.
-     Replace with: ![Rectangle walk with loop closure enabled](../Assets/images/hdvi_rect_lc.gif)
-     ============================================================ -->
-> **[ VIDEO 1 — Rectangle walk with loop closure ]**  
-> *Live trajectory and dense colored map in RViz2, retro-corrected when the loop closes.*
+![Rectangle walk with loop closure](../Assets/videos/hdvi_rect_lc.gif)
+
+*Live trajectory and dense colored map in RViz2, retro-corrected when the loop closes.*
 
 ---
 
@@ -91,13 +87,9 @@ The control run is a **strict comparison, not an absence of data.** Loop-closure
 | Pivot 1 | 0.96 m | 0.81 cm | 1.26° | 3 @ fitness 0.976–0.989 |
 | Pivot 2 | 0.87 m | 1.03 cm | 0.75° | 3 @ fitness 0.979–0.986 |
 
-<!-- ============================================================
-     VIDEO PLACEHOLDER 3 — PIVOT
-     Circle / in-place 360 rotation with LC.
-     Replace with: ![360-degree in-place rotation with loop closure](../Assets/images/hdvi_circle_lc.gif)
-     ============================================================ -->
-> **[ VIDEO 3 — 360° in-place rotation with loop closure ]**  
-> *Isolates rotational accuracy with minimal translation. Both runs close to ~1 cm and within ~1°.*
+![360-degree in-place rotation with loop closure](../Assets/videos/hdvi_circle_lc.gif)
+
+*Isolates rotational accuracy with minimal translation. Both runs close to roughly 1 cm and within about 1°.*
 
 ### Measurement method
 
