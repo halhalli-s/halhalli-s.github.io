@@ -7,9 +7,9 @@ title: Sachidanand Halhalli
 
 # Sachidanand Halhalli
 
-**Motion Planning · Autonomous Navigation · Embedded Systems · ROS2**
+**Motion Planning · SLAM & Perception · Autonomous Navigation · Embedded Systems**
 
-<p class="bio">Motion planning specialist with hands-on experience across the full robotics stack. I know how perception feeds planning and how planning feeds control — and I've shipped code that runs on real robots, not just in sim.</p>
+<p class="bio">Robotics engineer working across perception and planning. I've built a dense visual-inertial SLAM system from the camera driver up, and a perception-constrained motion planner running onboard a quadrotor — both deployed on real hardware and validated with measured results, not just simulation.</p>
 
 <a href="#projects" class="cta-btn">See my work ↓</a>
 
@@ -26,17 +26,24 @@ title: Sachidanand Halhalli
 
 <div class="tech-stack">
   <p><strong>Languages:</strong> C++17, Python, C</p>
-  <p><strong>Robotics:</strong> ROS2 (Humble), PX4, Motion Planning (A*, IRIS, ADMM, Safe Flight Corridors), SLAM, EKF, ICP</p>
+  <p><strong>Robotics:</strong> ROS2 (Humble), ROS2 (Jazzy), PX4, Motion Planning (A*, IRIS, ADMM, Safe Flight Corridors), SLAM, EKF, ICP, Loop Closure, Factor Graph Optimization, iSAM2</p>
   <p><strong>Systems:</strong> VOXL2 ARM64, Docker, Linux, OpenMP</p>
   <p><strong>Simulation:</strong> Gazebo, RViz, MuJoCo</p>
   <p><strong>Optimization:</strong> CasADi, MOSEK</p>
   <p><strong>ML/RL:</strong> PyTorch, Stable-Baselines3, SAC, PPO</p>
-  <p><strong>Perception:</strong> OctoMap, Velodyne LiDAR, Point Cloud Processing, GTSAM</p>
+  <p><strong>Perception:</strong> OctoMap, Velodyne LiDAR, Point Cloud Processing, GTSAM, Open3D, RGBD Cameras, Visual-Inertial Odometry, IMU Preintegration, Allan Variance Calibration</p>
 </div>
 
 ---
 
 ## Projects {#projects}
+
+<div class="project-card">
+  <h3><a href="{{ '/Projects/hdvi_slam.html' | relative_url }}">HDVI-SLAM — Handheld Dense Visual-Inertial SLAM</a></h3>
+  <p class="tags">Python · GTSAM · Open3D · ROS2 Jazzy · Orbbec Gemini 435Le</p>
+  <p>Dense visual-inertial SLAM built from scratch on an RGBD camera with no existing SLAM integration.</p>
+  <p class="meta">Personal Project · Jul 2026 – Aug 2026</p>
+</div>
 
 <div class="project-card">
   <h3><a href="./Projects/sfc">Perception-Constrained Safe Flight Corridor Planner</a></h3>
