@@ -39,7 +39,7 @@ title: Sachidanand Halhalli
 ## Projects {#projects}
 
 <div class="project-card">
-  <h3><a href="{{ '/Projects/hdvi_slam.html' | relative_url }}">HDVI-SLAM — Handheld Dense Visual-Inertial SLAM</a></h3>
+  <h3><a href="{{ '/Projects/hdvi_slam.html' | relative_url }}">HDVI-SLAM - Handheld Dense Visual-Inertial SLAM</a></h3>
   <p class="tags">Python · GTSAM · Open3D · ROS2 Jazzy · Orbbec Gemini 435Le</p>
   <p>Dense visual-inertial SLAM built from scratch on an RGBD camera with no existing SLAM integration.</p>
   <p class="meta">Personal Project · Jul 2026 – Aug 2026</p>
