@@ -9,7 +9,7 @@ title: Sachidanand Halhalli
 
 **Motion Planning · SLAM & Perception · Autonomous Navigation · Embedded Systems**
 
-<p class="bio">Robotics engineer working across perception and planning. I've built a dense visual-inertial SLAM system from the camera driver up, and a perception-constrained motion planner running onboard a quadrotor — both deployed on real hardware and validated with measured results, not just simulation.</p>
+<p class="bio">Robotics engineer working across perception and planning. I've built a dense visual-inertial SLAM system from the camera driver up, and a perception-constrained motion planner running onboard a quadrotor. Both are deployed on real hardware and validated with measured results, not just simulation.</p>
 
 <a href="#projects" class="cta-btn">See my work ↓</a>
 
