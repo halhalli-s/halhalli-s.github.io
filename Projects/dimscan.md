@@ -10,7 +10,7 @@ title: DimScan
 
 ---
 
-<!-- HERO GIF PLACEHOLDER: strongest single-plant data-collection or prediction GIF -->
+**[PLACEHOLDER — HERO GIF: replace with strongest single-plant data-collection or prediction GIF]**
 
 ## What This Is
 
@@ -47,10 +47,8 @@ The first stage is deterministic geometry. The second stage is learned from oper
 
 ### Data Collection Pipeline
 
-<!-- ARCHITECTURE DIAGRAM 1 PLACEHOLDER
-Show only the data-collection flow:
-RGB-D Capture → Trusted 3D Geometry → Feature Extraction → Operator Ground Truth → Training Dataset
--->
+**[PLACEHOLDER — ARCHITECTURE DIAGRAM 1: Data Collection Pipeline]**  
+*Replace with diagram: RGB-D Capture → Trusted 3D Geometry → Feature Extraction → Operator Ground Truth → Training Dataset*
 
 ```text
 RGB-D Capture
@@ -62,10 +60,8 @@ RGB-D Capture
 
 ### Prediction Pipeline
 
-<!-- ARCHITECTURE DIAGRAM 2 PLACEHOLDER
-Show only the prediction flow:
-RGB-D Capture → Same Geometry Pipeline → Feature Vector → AI2 → Predicted Box L × W × H
--->
+**[PLACEHOLDER — ARCHITECTURE DIAGRAM 2: Prediction Pipeline]**  
+*Replace with diagram: RGB-D Capture → Same Geometry Pipeline → Feature Vector → AI2 → Predicted Box L × W × H*
 
 ```text
 RGB-D Capture
@@ -81,9 +77,9 @@ Collection and prediction intentionally use the same perception pipeline so that
 
 ## From RGB-D Frame to Trusted Object Geometry
 
-<!-- IMAGE PLACEHOLDER: RGB plant image -->
-<!-- IMAGE PLACEHOLDER: table-plane visualization -->
-<!-- IMAGE PLACEHOLDER: isolated object_cloud visualization -->
+**[PLACEHOLDER — IMAGE: RGB plant image]**
+**[PLACEHOLDER — IMAGE: table-plane visualization]**
+**[PLACEHOLDER — IMAGE: isolated object cloud visualization]**
 
 The geometry pipeline is the core of DimScan. The system does **not** allow the 2D AI segmentation model to decide which 3D points belong to the measured object. Instead, object extraction is based on metric point-cloud geometry.
 
@@ -103,7 +99,7 @@ This geometry-first design is deliberate: an incorrect AI mask should not be abl
 
 ## Geometric Measurements
 
-<!-- IMAGE PLACEHOLDER: object visualization with pink width/dimension line -->
+**[PLACEHOLDER — IMAGE: object cloud with pink width/dimension line]**
 
 From the isolated cloud, DimScan computes physical measurements directly in metric 3D space.
 
@@ -148,7 +144,7 @@ The resulting per-view information is combined into one prediction-ready represe
 
 ### Single-Plant Mode
 
-<!-- GIF PLACEHOLDER: SINGLE MODE DEMO 1 -->
+**[PLACEHOLDER — GIF: Single-mode data collection, Plant 1]**
 
 A single collection job follows this sequence:
 
@@ -166,13 +162,13 @@ Ground truth is always entered by the operator. It remains separate from model o
 
 ### Second Single-Plant Example
 
-<!-- GIF PLACEHOLDER: SINGLE MODE DEMO 2 -->
+**[PLACEHOLDER — GIF: Single-mode data collection, Plant 2]**
 
 A second example shows that the same pipeline is reused across visibly different plant geometries rather than being tuned around one specific shape.
 
 ### Group / Multiple-Plant Mode
 
-<!-- GIF PLACEHOLDER: GROUP MODE DEMO -->
+**[PLACEHOLDER — GIF: Group / multiple-plant data collection]**
 
 DimScan also supports grouped arrangements.
 
@@ -206,7 +202,7 @@ The raw AI2 output remains visible and auditable. Ground truth stays unchanged s
 
 ## Prediction Demo
 
-<!-- GIF PLACEHOLDER: SINGLE PREDICTION DEMO -->
+**[PLACEHOLDER — GIF: Single-mode AI2 prediction demo]**
 
 In Predict mode, the same RGB-D and geometry pipeline runs, but the operator does not enter a box label. The trained AI2 model directly returns predicted length, width, and height.
 
@@ -214,7 +210,7 @@ The prediction interface keeps the raw result visible so that the operator can c
 
 ### Representative Prediction Results
 
-<!-- RESULT TABLE PLACEHOLDER: replace with real examples from current single-plant model -->
+**[PLACEHOLDER — RESULTS: replace the table below with real GT vs AI2 prediction examples]**
 
 | Example | Ground Truth | AI2 Prediction | Error |
 |---|---|---|---|
