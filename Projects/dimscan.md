@@ -53,7 +53,7 @@ The most important design rule is that **geometry remains authoritative**. AI se
 
 ## From RGB-D Frame to Trusted Object Geometry
 
-![RGB input, table isolation, and trusted object geometry](../Assets/images/table_object_rgb_inone.png)
+![RGB input, table isolation, and trusted object geometry](../Assets/images/Table_object_rgb_inone.png)
 
 The geometry pipeline is the core of DimScan.
 
