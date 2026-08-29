@@ -10,8 +10,6 @@ title: DimScan
 
 ---
 
-**[PLACEHOLDER — HERO GIF: replace with strongest single-plant data-collection or prediction GIF]**
-
 ## What This Is
 
 Traditional dimension scanners work well for rigid objects because their outer dimensions are stable and easy to describe with a simple bounding box. Nursery plants are different: they are sparse, irregular, asymmetric, and deformable, so the box required to pack them safely is not always obvious from a single rigid measurement.
