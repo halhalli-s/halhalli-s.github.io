@@ -10,13 +10,9 @@ title: HDVI-SLAM
 
 ---
 
-<!-- ============================================================
-     VIDEO PLACEHOLDER 1: HERO
-     Rectangle walk WITH loop closure. Best-looking run.
-     Replace with: ![Rectangle walk with loop closure enabled](../Assets/images/hdvi_rect_lc.gif)
-     ============================================================ -->
-> **[ VIDEO 1: Rectangle walk with loop closure ]**  
-> *Live trajectory and dense colored map in RViz2, retro-corrected when the loop closes.*
+![Rectangle walk with loop closure](../Assets/videos/hdvi_rect_lc.gif)
+
+*Live trajectory and dense colored map in RViz2, retro-corrected when the loop closes.*
 
 ---
 
@@ -61,13 +57,9 @@ Five runs, single session, fixed configuration, room lights on. Ground truth est
 
 **Backend correction: 5 to 9× reduction in position error, 3.6 to 8.6× in heading.**
 
-<!-- ============================================================
-     VIDEO PLACEHOLDER 2: CONTROL ARM
-     Rectangle walk WITHOUT loop closure. Show the drift.
-     Replace with: ![Rectangle walk, loop closure disabled](../Assets/images/hdvi_rect_nolc.gif)
-     ============================================================ -->
-> **[ VIDEO 2: Same rectangle, loop closure gated off ]**  
-> *The map does not snap back on revisit. Final pose lands 9.0 cm and 6.8° from the marked start.*
+![Rectangle walk, loop closure disabled](../Assets/videos/hdvi_rect_nolc.gif)
+
+*The map does not snap back on revisit. Final pose lands 9.0 cm and 6.8° from the marked start.*
 
 The control run is a **strict comparison, not an absence of data.** Loop-closure verification ran normally and *found* the same closures the enabled runs used, six candidates scoring 0.923 to 0.928, but the acceptance threshold was raised to 0.95 so none were applied. That is stronger evidence than disabling the module, because it demonstrates the closures were available and deliberately withheld.
 
@@ -80,13 +72,9 @@ The control run is a **strict comparison, not an absence of data.** Loop-closure
 | Pivot 1 | 0.96 m | 0.81 cm | 1.26° | 3 @ fitness 0.976–0.989 |
 | Pivot 2 | 0.87 m | 1.03 cm | 0.75° | 3 @ fitness 0.979–0.986 |
 
-<!-- ============================================================
-     VIDEO PLACEHOLDER 3: PIVOT
-     Circle / in-place 360 rotation with LC.
-     Replace with: ![360-degree in-place rotation with loop closure](../Assets/images/hdvi_circle_lc.gif)
-     ============================================================ -->
-> **[ VIDEO 3: 360° in-place rotation with loop closure ]**  
-> *Isolates rotational accuracy with minimal translation. Both runs close to ~1 cm and within ~1°.*
+![360-degree in-place rotation with loop closure](../Assets/videos/hdvi_circle_lc.gif)
+
+*Isolates rotational accuracy with minimal translation. Both runs close to ~1 cm and within ~1°.*
 
 ### Measurement method
 
