@@ -39,22 +39,7 @@ This project was as much about **measurement discipline** as about the algorithm
 
 Strict layer separation is the load-bearing design invariant. The estimation core imports numpy, Open3D, and GTSAM, but **never** a sensor SDK and **never** ROS. All sensor data crosses a two-dataclass boundary (`CloudFrame`, `ImuSample`). The camera SDK is imported in exactly one file; ROS in exactly one other. The core is unit-testable with neither hardware nor a ROS installation present.
 
-```
-SDK callback thread
-  IMU (accel + gyro)  --> preintegrator.integrate()          [202 Hz]
-  Depth + color frame --> depth queue (maxsize=1, drop-on-full)
-
-Depth worker thread
-  depth_to_cloud (~120 ms)
-    --> keyframe trigger (gravity-cancelled translation)
-    --> backpressure gate
-    --> ICP align (IMU rotation-only seed)
-    --> iSAM2 update  (ICP BetweenFactor + ImuFactor + bias random walk)
-    --> loop closure check (every Nth keyframe)
-
-Map thread
-  Transform all keyframe clouds by CURRENT optimized poses --> voxelize --> publish
-```
+![HDVI-SLAM threading and estimation architecture](../Assets/images/hdvi_architecture.svg)
 
 **Factor graph per keyframe:** an ICP between-factor, an `ImuFactor` over the preintegrated interval, and a `BetweenFactorConstantBias` random-walk edge. Loop closures are applied incrementally with extra relinearization sweeps and a full solve.
 
