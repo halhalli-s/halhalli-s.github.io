@@ -212,26 +212,16 @@ Tightened to 0.009 rad, then reverted to 0.03. The tight value claims every keyf
 
 **Fitness is not accuracy.** The single most useful lesson in the project. Point-to-plane ICP against a flat wall reports fitness 0.95 while under-measuring translation five-fold. A loop-closure candidate with 21° of yaw error scores 0.253; one with three times the position error but 2° of yaw scores 0.975. A high score means "many points found partners," which is not the same as "the transform is right." Every gate in the system had to be designed around that gap.
 
-**Every sensor is trustworthy for something and useless for something else, and the architecture has to encode which.** The IMU gives excellent rotation and observable bias, and cannot give position at any timescale that matters, because gravity is 9.81 m/s² against 0.3 m/s² of hand motion. ICP gives position but goes silently blind in rotation when depth degrades. Neither fact is a limitation to work around. They are the reason the factor graph is shaped the way it is: IMU owns rotation, gravity, and bias observability; ICP owns position; velocity exists only so bias stays observable. Getting sensor fusion right was less about the fusion math than about being honest regarding what each sensor actually measures.
-
-**Calibration is three separate problems that are easy to conflate.** Allan variance describes how bias *drifts* over time. Turn-on bias is the offset present in this particular power-on. Extrinsic calibration is where the sensor sits relative to the body. I initially treated the first as if it covered the second, which put roughly 15 cm of phantom translation into every 2-second window. They require different measurements, at different times, and a value derived at the wrong sample rate is not merely imprecise but wrong.
-
-**Hardware and software fail in ways that look like each other.** The 20× IMU throughput deficit read like a software bug and was actually three independent causes across the SDK configuration, the driver architecture, and the threading model. Heading drift read like a tuning problem and turned out to be room lighting degrading active-stereo depth. In both cases the instinct to reach for a parameter would have been wrong. What worked was instrumenting the boundary between layers and reading the numbers.
-
 **The measurement setup was harder to get right than the algorithm.** Early runs scattered 0.42° to 5.52° in heading across four configurations, a spread wider than the differences between the configurations, which meant no change could be attributed to anything. Fixing it required a marked physical ground truth and repeat runs on a *fixed* configuration. With those in place, the same system produced 0.75° to 1.89°. The scatter was never noise; it was the absence of a controlled protocol.
 
 **Textbook SLAM teaches the shape of the problem, not the failure modes.** Landmarks, probability, and EKF derivations do not tell you that gravity is 30× your hand motion, that a bad ICP seed is worse than no seed, or that Allan variance and turn-on bias are different quantities. Those came from instrumenting the pipeline and reading logs.
 
+---
+
 ## Future Work
 
-**Faster registration, which is where nearly all the time goes.** ICP is ~250 ms of a ~348 ms keyframe cycle, and roughly 80% of that is voxel downsampling and normal estimation rather than the solver. Each keyframe's target cloud is the previous keyframe's source cloud, recomputed from scratch, so caching preprocessed clouds and normals is close to free. Beyond that: GPU-accelerated registration, and testing the 640×400 @ 20 fps depth mode to halve the point-cloud conversion cost.
-
-**Alignment that does not depend on geometry alone.** The system's sharpest failure mode is planar degeneracy: point-to-plane ICP cannot observe translation parallel to a dominant plane, and reports high fitness while doing so. The camera already delivers registered color that the registration stage currently ignores entirely. Adding a photometric or feature-based term gives an independent constraint precisely where geometry is uninformative. The principled companion is eigenvalue-based degeneracy detection on the ICP information matrix, inflating a factor's sigma when the smallest eigenvalue approaches zero, which catches the "confident nonsense" case that fitness structurally cannot.
-
-**A map that deforms instead of shifting in rigid blocks.** The residual seam at closure keyframes is a consequence of bolting rigid point clouds to poses. Surfels with a deformation graph, or frame de-integration and re-integration, would let the surface warp continuously when the graph is revised.
-
-**Concurrency the pipeline is already shaped for.** Loop-closure verification costs 1.0 to 1.4 s and currently blocks the keyframe path, inflating the next several preintegration windows. Moving it to its own thread is contained work, with one hard requirement: the closure must add its factor by keyframe index and let iSAM2 re-solve, never apply a correction computed before the graph advanced.
-
-**Off the laptop and onto embedded hardware.** The pipeline currently runs on a desktop CPU. Getting it onto a Jetson-class board is the difference between a demonstration and something deployable on a robot, and the profiling needed to know whether that is feasible already exists.
-
-**Validation beyond a single room.** Results here are on 0.6 × 0.9 m and ~0.9 m closed paths, measured as loop-closure endpoint error. Larger loops, and evaluation against a public benchmark such as TUM RGB-D for true ATE and RPE, are what would let these numbers be compared against published systems rather than only against the system's own open-loop baseline.
+- **Cache ICP preprocessing.** Voxel downsampling and normals are ~80% of ICP time, and each keyframe's target cloud is the previous keyframe's source cloud, recomputed from scratch
+- **Eigenvalue-based degeneracy detection.** Inflate a between-factor's sigma when the ICP information matrix is near-singular, catching the "confident nonsense" case that fitness cannot see
+- **Move loop closure to its own thread.** Verification ICP costs 1.0 to 1.4 s and currently stalls the keyframe path
+- **Characterize on larger loops** and against a public benchmark for true ATE/RPE
+- **Deformable map representation** to eliminate the closure seam
