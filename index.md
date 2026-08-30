@@ -9,7 +9,7 @@ title: Sachidanand Halhalli
 
 **Motion Planning · SLAM & Perception · Autonomous Navigation · Embedded Systems**
 
-<p class="bio">Robotics engineer working across perception and planning. I've built a dense visual-inertial SLAM system from the camera driver up, and a perception-constrained motion planner running onboard a quadrotor. Both are deployed on real hardware and validated with measured results, not just simulation.</p>
+<p class="bio">Robotics engineer working across perception, motion planning, and autonomous systems. I’ve built an RGB-D plant dimensioning system that learns shipping-box dimensions from 3D geometry, a dense visual-inertial SLAM system from the camera driver up, and a perception-constrained motion planner deployed on a real quadrotor. My work focuses on real hardware, measured results, and end-to-end robotics systems.</p>
 
 <a href="#projects" class="cta-btn">See my work ↓</a>
 
@@ -30,13 +30,20 @@ title: Sachidanand Halhalli
   <p><strong>Systems:</strong> VOXL2 ARM64, Docker, Linux, OpenMP</p>
   <p><strong>Simulation:</strong> Gazebo, RViz, MuJoCo</p>
   <p><strong>Optimization:</strong> CasADi, MOSEK</p>
-  <p><strong>ML/RL:</strong> PyTorch, Stable-Baselines3, SAC, PPO</p>
-  <p><strong>Perception:</strong> OctoMap, Velodyne LiDAR, Point Cloud Processing, GTSAM, Open3D, RGBD Cameras, Visual-Inertial Odometry, IMU Preintegration, Allan Variance Calibration</p>
+  <p><strong>ML/RL:</strong> PyTorch, scikit-learn, Stable-Baselines3, SAC, PPO</p>
+  <p><strong>Perception:</strong> OctoMap, Velodyne LiDAR, Point Cloud Processing, GTSAM, Open3D, RGB-D Cameras, 3D Clustering, Visual-Inertial Odometry, IMU Preintegration, Allan Variance Calibration</p>
 </div>
 
 ---
 
 ## Projects {#projects}
+
+<div class="project-card">
+  <h3><a href="./Projects/dimscan">DimScan – RGB-D Dimensioning and Learned Packing for Irregular Objects</a></h3>
+  <p class="tags">Python · Open3D · PyTorch · scikit-learn · Flask · Orbbec Gemini RGB-D</p>
+  <p>End-to-end RGB-D perception and ML pipeline that isolates irregular plant geometry in 3D, extracts shape features, and predicts shipping-box length, width, and height.</p>
+  <p class="meta">Personal Project · May 2023 – Jul 2026</p>
+</div>
 
 <div class="project-card">
   <h3><a href="{{ '/Projects/hdvi_slam.html' | relative_url }}">HDVI-SLAM - Handheld Dense Visual-Inertial SLAM</a></h3>

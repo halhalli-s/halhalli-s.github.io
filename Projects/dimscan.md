@@ -41,54 +41,30 @@ The first stage is deterministic geometry. The second stage is learned from oper
 
 ---
 
-## System Architecture
+## Data Collection Pipeline
 
-### Data Collection Pipeline
+![DimScan data collection pipeline](../Assets/images/Data_Collection_pipeline.png)
 
-**[PLACEHOLDER — ARCHITECTURE DIAGRAM 1: Data Collection Pipeline]**  
-*Replace with diagram: RGB-D Capture → Trusted 3D Geometry → Feature Extraction → Operator Ground Truth → Training Dataset*
+The collection pipeline converts a synchronized RGB-D observation into a trusted 3D representation, extracts a compact feature vector, and pairs that representation with operator-entered shipping-box ground truth.
 
-```text
-RGB-D Capture
-→ Trusted 3D Geometry
-→ Feature Extraction
-→ Operator Ground-Truth Box L × W × H
-→ AI2 Training Dataset
-```
-
-### Prediction Pipeline
-
-**[PLACEHOLDER — ARCHITECTURE DIAGRAM 2: Prediction Pipeline]**  
-*Replace with diagram: RGB-D Capture → Same Geometry Pipeline → Feature Vector → AI2 → Predicted Box L × W × H*
-
-```text
-RGB-D Capture
-→ Same Trusted Geometry Pipeline
-→ Feature Vector
-→ AI2
-→ Predicted Shipping-Box L × W × H
-```
-
-Collection and prediction intentionally use the same perception pipeline so that the model sees the same type of features during training and inference.
+The most important design rule is that **geometry remains authoritative**. AI segmentation can provide optional support information, but it does not decide which 3D points belong to the measured object.
 
 ---
 
 ## From RGB-D Frame to Trusted Object Geometry
 
-**[PLACEHOLDER — IMAGE: RGB plant image]**
-**[PLACEHOLDER — IMAGE: table-plane visualization]**
-**[PLACEHOLDER — IMAGE: isolated object cloud visualization]**
+![RGB input, table isolation, and trusted object geometry](../Assets/images/table_object_rgb_inone.png)
 
-The geometry pipeline is the core of DimScan. The system does **not** allow the 2D AI segmentation model to decide which 3D points belong to the measured object. Instead, object extraction is based on metric point-cloud geometry.
+The geometry pipeline is the core of DimScan.
 
 The main stages are:
 
 - **Calibrated 3D ROI filtering** to keep only the physical work volume.
-- **Table removal** to remove the dominant support surface.
+- **Table and object isolation** to separate the plant from the support surface and background.
 - **Voxelization** to reduce point density while preserving object structure.
 - **Clustering** to separate the plant from disconnected geometry.
-- **Dominant-cluster selection** to identify the primary object.
-- **Nearby-fragment recovery** to recover valid plant geometry that may separate during clustering.
+- **Dominant-object selection** to identify the primary plant.
+- **Nearby-fragment recovery** to recover valid geometry that may separate during clustering.
 - **Trusted object-cloud generation** as `object_cloud.ply`, which becomes the source for downstream measurements and features.
 
 This geometry-first design is deliberate: an incorrect AI mask should not be able to silently redefine the object being measured.
@@ -97,7 +73,7 @@ This geometry-first design is deliberate: an incorrect AI mask should not be abl
 
 ## Geometric Measurements
 
-**[PLACEHOLDER — IMAGE: object cloud with pink width/dimension line]**
+![Object cloud with measured width](../Assets/images/object_ply_width_line.jpeg)
 
 From the isolated cloud, DimScan computes physical measurements directly in metric 3D space.
 
@@ -142,7 +118,7 @@ The resulting per-view information is combined into one prediction-ready represe
 
 ### Single-Plant Mode
 
-**[PLACEHOLDER — GIF: Single-mode data collection, Plant 1]**
+![Single-plant data collection example 1](../Assets/videos/single_mode_plantv1.gif)
 
 A single collection job follows this sequence:
 
@@ -160,13 +136,13 @@ Ground truth is always entered by the operator. It remains separate from model o
 
 ### Second Single-Plant Example
 
-**[PLACEHOLDER — GIF: Single-mode data collection, Plant 2]**
+![Single-plant data collection example 2](../Assets/videos/single_mode_plantv2.gif)
 
-A second example shows that the same pipeline is reused across visibly different plant geometries rather than being tuned around one specific shape.
+The same capture and feature-generation path is reused across visibly different plant geometries rather than being tuned around one specific shape.
 
 ### Group / Multiple-Plant Mode
 
-**[PLACEHOLDER — GIF: Group / multiple-plant data collection]**
+![Group-mode data collection](../Assets/videos/group_mode_plant.gif)
 
 DimScan also supports grouped arrangements.
 
@@ -176,9 +152,21 @@ The group data-collection path is implemented and is currently being used to bui
 
 ---
 
+## Prediction Pipeline
+
+![DimScan prediction pipeline](../Assets/images/Prediction_pipeline.png)
+
+Prediction uses the same trusted geometry path as data collection.
+
+Instead of asking the operator for a ground-truth box, the generated feature vector is passed directly to the trained AI2 model, which predicts box **length, width, and height**.
+
+Single and group jobs use separate model paths because they represent different packing problems.
+
+---
+
 ## AI2: Learned Shipping-Box Prediction
 
-AI2 learns from the geometry-derived feature vector together with operator-entered ground-truth box dimensions.
+AI2 learns from geometry-derived features together with operator-entered ground-truth box dimensions.
 
 ```text
 Trusted 3D geometry
@@ -192,33 +180,33 @@ Predicted box width
 Predicted box height
 ```
 
-Single and group jobs use separate model paths because they represent different packing problems.
-
 The raw AI2 output remains visible and auditable. Ground truth stays unchanged so that future retraining always uses the original operator label rather than a previous prediction.
 
 ---
 
 ## Prediction Demo
 
-**[PLACEHOLDER — GIF: Single-mode AI2 prediction demo]**
+![Single-plant AI2 prediction](../Assets/videos/prediction_mode_single_plant.gif)
 
-In Predict mode, the same RGB-D and geometry pipeline runs, but the operator does not enter a box label. The trained AI2 model directly returns predicted length, width, and height.
+In Predict mode, DimScan runs the same RGB-D geometry pipeline used during data collection, generates the feature vector, and passes it directly to the trained AI2 model.
 
-The prediction interface keeps the raw result visible so that the operator can compare the model output against known ground truth when evaluating a labeled example.
+The current single-plant model was trained on **50 collected examples**. The model predicts the required shipping-box **length, width, and height**, while the original ground-truth dimensions remain unchanged for comparison and future retraining.
 
-### Representative Prediction Results
+The prediction demo above shows the full end-to-end path from plant capture to AI2 output.
 
-**[PLACEHOLDER — RESULTS: replace the table below with real GT vs AI2 prediction examples]**
+### Current Validation Snapshot
 
-| Example | Ground Truth | AI2 Prediction | Error |
-|---|---|---|---|
-| Plant A | `L × W × H` | `L × W × H` | `...` |
-| Plant B | `L × W × H` | `L × W × H` | `...` |
-| Plant C | `L × W × H` | `L × W × H` | `...` |
+| Result | Current value |
+|---|---|
+| Single-plant training data | **50 collected examples** |
+| Same-plant geometry variation | **0.07–0.09 in** |
+| Collection-ready latency | **3.4–3.9 s** |
+| Original capture latency | **20–25 s per view** |
+| Single-plant prediction | **Implemented and demonstrated** |
+| Group-mode collection | **Implemented; dataset still growing** |
+| Group prediction evaluation | **Pending a sufficiently diverse group dataset** |
 
-These results should always be reported together with the number of **unique physical plants** used for that training run.
-
-Current single-plant prediction is the evaluated learning path. Group-mode data collection is active, but the separate group model will only be evaluated once enough genuinely different grouped examples have been collected.
+These results are an early validation of the complete perception-to-prediction pipeline rather than a claim of final production accuracy. The main remaining bottleneck is dataset diversity, not geometry repeatability.
 
 ---
 
@@ -285,7 +273,7 @@ A capture request performs the required processing before returning its result. 
 
 **The dataset is still growing.** The geometry pipeline is already repeatable, but AI2 generalization is limited mainly by the number and diversity of unique physical plants available for training.
 
-**Repeated captures do not replace physical diversity.** Multiple views of one plant are useful for testing repeatability, but new plant shapes, sizes, SKUs, pots, and arrangements are what improve model generalization.
+**Repeated captures do not replace physical diversity.** Multiple captures of one plant are useful for testing repeatability, but new plant shapes, sizes, SKUs, pots, and arrangements are what improve model generalization.
 
 **Group prediction needs its own evaluation dataset.** The group collection workflow is implemented, but the group model should not be judged from the single-plant dataset.
 
